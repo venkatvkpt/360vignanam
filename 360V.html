@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>360 Vignanam | Official</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#064e3b,#042f2e);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* Soft Glow */
+body::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#facc15;
+    border-radius:50%;
+    filter:blur(200px);
+    opacity:0.10;
+    animation: glowMove 6s infinite alternate ease-in-out;
+}
+
+@keyframes glowMove{
+    from{transform:translate(-150px,-100px);}
+    to{transform:translate(150px,100px);}
+}
+
+.container{
+    z-index:2;
+}
+
+/* Logo Bounce */
+.logo{
+    width:170px;
+    border-radius:50%;
+    animation: bounce 1.8s infinite;
+    box-shadow:0 0 30px #facc15;
+}
+
+@keyframes bounce{
+    0%,100%{ transform: translateY(0); }
+    30%{ transform: translateY(-25px); }
+    50%{ transform: translateY(0); }
+    70%{ transform: translateY(-12px); }
+}
+
+h1{
+    margin-top:25px;
+    font-size:45px;
+    font-weight:800;
+    color:#facc15;
+}
+
+.tagline{
+    margin-top:10px;
+    font-size:18px;
+    color:#99f6e4;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 30px;
+    background:#facc15;
+    color:#042f2e;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #facc15;
+}
+
+/* Footer */
+footer{
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    font-size:12px;
+    opacity:0.6;
+    letter-spacing:1px;
+}
+
+#viewCount{
+    font-size:12px;
+    color:#99f6e4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <img src="logo.png" class="logo" alt="360 Vignanam Logo">
+
+    <h1>360 Vignanam</h1>
+    <div class="tagline">Movies • Quiz • Knowledge • Entertainment</div>
+
+    <a href="https://www.youtube.com/@360Vignanam" target="_blank" class="btn">
+        Visit YouTube Channel
+    </a>
+
+</div>
+
+<footer>
+© 2026 360 Vignanam | Page: <span id="viewCount"></span>
+</footer>
+
+<script>
+if(localStorage.getItem("page_view")){
+    localStorage.setItem("page_view", Number(localStorage.getItem("page_view")) + 1);
+}else{
+    localStorage.setItem("page_view", 1);
+}
+document.getElementById("viewCount").innerText = localStorage.getItem("page_view");
+</script>
+
+</body>
+</html>
